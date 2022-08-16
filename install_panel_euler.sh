@@ -402,12 +402,10 @@ Get_Versions(){
 		fi
 		if [ -z "${os_version}" ];then
 			os_version=$(cat /etc/redhat-release |grep Stream|grep -oE 8)
-		fi
-        else
-                os_type='el'
-                os_version==$(cat $Euler_version_file|grep Euler|grep -Eo '([0-9]+\.)+[0-9]+')
+		fi       
+                is_euleros=$(cat $Euler_version_file|grep Euler|grep -Eo '([0-9]+\.)+[0-9]+')
                 if [ "$is_euleros" != "" ];then
-                        return
+                        os_version=$(cat /etc/openEuler-release |grep -Eo '([0-9]+\.)+[0-9]+')
                 fi
 	else
 		os_type='ubuntu'
