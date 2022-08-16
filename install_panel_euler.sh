@@ -404,9 +404,8 @@ Get_Versions(){
 			os_version=$(cat /etc/redhat-release |grep Stream|grep -oE 8)
 		fi
         else
-        if [ -f $Euler_version_file ];then
                 os_type='el'
-                is_euleros=$(cat $Euler_version_file|grep Euler|grep -Eo '([0-9]+\.)+[0-9]+')
+                os_version==$(cat $Euler_version_file|grep Euler|grep -Eo '([0-9]+\.)+[0-9]+')
                 if [ "$is_euleros" != "" ];then
                         return
                 fi
